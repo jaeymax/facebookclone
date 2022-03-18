@@ -7,10 +7,14 @@ import ChatIcon from "@material-ui/icons/Chat";
 import StorefrontIcon from "@material-ui/icons/Storefront";
 import VideoLibraryIcon from "@material-ui/icons/VideoLibrary";
 import { ExpandMoreOutlined } from '@material-ui/icons';
+import { useContext } from 'react';
+import { StateContext } from './StateProvider';
 
 function Sidebar() {
+  const {user} = useContext(StateContext);
+
   return <div className='sidebar' >
-      <SidebarRow title={'jay'} />
+      <SidebarRow title={user.displayName} />
       <SidebarRow Icon={LocalHospitalIcon} title="Covid-19 information center" />
       <SidebarRow Icon={EmojiFlags} title="Pages" />
       <SidebarRow Icon={PeopleIcon} title="Friends"/>

@@ -3,11 +3,23 @@ import './Login.css'
 import { Button } from '@material-ui/core';
 import fblogo from './images/fb-logo.png';
 import fbtext from './images/fb-text.png'
+import {useGlobalContext} from './StateProvider';
+import { GoogleAuthProvider, signInWithPopup} from 'firebase/auth';
+import { auth } from './firebase';
+//import { actionTypes } from './reducer';
 
 function Login() {
-
-    const signIn = () =>{
-
+   
+  
+    const signIn = async () =>{
+      const provider = new GoogleAuthProvider();
+      try{
+        const result = await signInWithPopup(auth, provider);
+        console.log(result.user)
+        
+      }catch(error){
+        console.log(error)
+      }
     }
 
   return <div className='login' >
